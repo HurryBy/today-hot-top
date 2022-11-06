@@ -2,9 +2,13 @@
 
 爬取每日热榜
 
+## 支持类型
+
+> **baidu/bilibili/weibo/bilibilivideo**
+
 ## 请求示例
 
-> ?type=baidu/bilibili/weibo/bilibilivideo
+> ?type=baidu
 
 ### 返回示例
 
@@ -206,6 +210,7 @@
 ## 开发日志
 
 22.11.5 开始项目开发
+
 22.11.6 Support 百度/B 站/微博/B 站热门视频
 
 | 返回值     | 解释                       |
@@ -221,5 +226,3 @@
 | up         | UP 主名字                  |
 | danmu      | 弹幕数                     |
 | BV         | BV 号                      |
-| danmu      | 弹幕数                     |
-| danmu      | 弹幕数                     |
