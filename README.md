@@ -1,10 +1,10 @@
 # today-hot-top
 
-爬取每日热榜
+爬取每日热榜 API
 
 ## 支持类型
 
-> **baidu/bilibili/weibo/bilibilivideo/sougou/txnews/toutiao**
+> **baidu/bilibili/weibo/bilibilivideo/sougou/txnews/toutiao/thepaper/360so/pearvideo/haokan/haokanvideo/bjnews**
 
 ## 请求示例
 
@@ -211,7 +211,7 @@
 
 22.11.5 开始项目开发
 
-22.11.6 Support 百度/B 站/微博/B 站热门视频/搜狗/腾讯新闻/今日头条
+22.11.6 Support 百度/B 站/微博/B 站热门视频/搜狗/腾讯新闻/今日头条/澎湃新闻/360 搜索/梨视频/好看视频热搜/好看视频热榜/新京报
 
 | 返回值     | 解释                       |
 | ---------- | -------------------------- |
@@ -226,3 +226,4 @@
 | up         | UP 主名字                  |
 | danmu      | 弹幕数                     |
 | BV         | BV 号                      |
+| video_url  | 视频地址                   |
