@@ -4,7 +4,7 @@
 
 ## 支持类型
 
-> **baidu/bilibili/weibo/bilibilivideo**
+> **baidu/bilibili/weibo/bilibilivideo/sougou/txnews/toutiao**
 
 ## 请求示例
 
@@ -211,7 +211,7 @@
 
 22.11.5 开始项目开发
 
-22.11.6 Support 百度/B 站/微博/B 站热门视频
+22.11.6 Support 百度/B 站/微博/B 站热门视频/搜狗/腾讯新闻/今日头条
 
 | 返回值     | 解释                       |
 | ---------- | -------------------------- |

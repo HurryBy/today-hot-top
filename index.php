@@ -101,6 +101,52 @@ function bilibilivideo(){
     }
     return $result;
 }
+function sougou(){
+    $data = c("https://hotlist.imtt.qq.com/Fetch","PC");
+    $data = json_decode($data,true);
+    for($i=0;$i<=100;$i++){
+        if($data['main'][$i]['title'] != null){
+            $result[$i] = array(
+                'index' => $i+1,
+                'title' => $data['main'][$i]['title'],
+                'heat_score' => $data['main'][$i]['score'],
+                'url' => $data['main'][$i]['url']
+            );
+        }
+    }
+    return $result;
+}
+function txnews(){
+    $data = c("https://hotlist.imtt.qq.com/Fetch","PC");
+    $data = json_decode($data,true);
+    for($i=0;$i<=100;$i++){
+        if($data['tencent'][$i]['title'] != null){
+            $result[$i] = array(
+                'index' => $i+1,
+                'title' => $data['tencent'][$i]['title'],
+                'heat_score' => $data['tencent'][$i]['score'],
+                'url' => $data['tencent'][$i]['url']
+            );
+        }
+    }
+    return $result;
+}
+function toutiao(){
+    $data = c("https://www.toutiao.com/hot-event/hot-board/?origin=toutiao_pc","PC");
+    $data = json_decode($data,true);
+    for($i=0;$i<=100;$i++){
+        if($data['data'][$i]['Title'] != null){
+            $url = str_replace("\u0026","&",$data['data'][$i]['Url']);
+            $result[$i] = array(
+                'index' => $i+1,
+                'title' => $data['data'][$i]['Title'],
+                'heat_score' => $data['data'][$i]['HotValue'],
+                'url' => $url
+            );
+        }
+    }
+    return $result;
+}
 // Main
 header('Access-Control-Allow-Origin:*');
 header('Content-Type:application/json');
@@ -139,5 +185,27 @@ else if($type == "bilibilivideo"){
         "data" => bilibilivideo()
     );
 }
+else if($type == "sougou"){
+    $json = array(
+        "code" => 200, 
+        "msg" => '解析成功',
+        "data" => sougou()
+    );
+}
+else if($type == "txnews"){
+    $json = array(
+        "code" => 200, 
+        "msg" => '解析成功',
+        "data" => txnews()
+    );
+}
+else if($type == "toutiao"){
+    $json = array(
+        "code" => 200, 
+        "msg" => '解析成功',
+        "data" => toutiao()
+    );
+}
+
 echo json_encode($json, JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 ?>
