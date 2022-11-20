@@ -8,10 +8,10 @@ function c($url, $ua){
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
     curl_setopt($ch, CURLOPT_REFERER, $url);
+    curl_setopt($ch, CURLOPT_ENCODING, '');
     $headers = array(
         "accept-language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6"
     );
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
     if ($ua == "Mobile") {
         curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Android 4.4; Mobile; rv:70.0) Gecko/70.0 Firefox/70.0");
     } else if($ua == "PC"){
@@ -251,6 +251,28 @@ function bjnews(){
     }
     return $result;
 }
+function five2pojie(){
+    $data = c("https://www.52pojie.cn/misc.php?mod=ranklist&type=thread&view=heats&orderby=today","PC");
+    $data = mb_convert_encoding($data, 'UTF-8', 'UTF-8,GBK,GB2312,BIG5');
+    $url = zhengze($data, '/<th><a href="(.*)" target="_blank">.*<\/a><\/th>/m');
+    $hot = zhengze($data, '/<th><a href=".*" target="_blank">(.*)<\/a><\/th>/m');
+    $category = zhengze($data, '/<td class="frm"><a href=".*" class="xg1" target="_blank">(.*)<\/a><\/td>/m');
+    $author = zhengze($data, '/<cite><a href="home\.php\?mod=space&amp;uid=.*" target="_blank">(.*)<\/a><\/cite>/m');
+    $time = zhengze($data, '/<cite><a href="home\.php\?mod=space&amp;uid=.*" target="_blank">.*<\/a><\/cite>[\W\w]<em>(.*)<\/em>/m');
+    for($i=0;$i<=15;$i++){
+        if($hot[$i][1] != null){
+            $result[$i] = array(
+                'index' => $i+1,
+                'title' => $hot[$i][1],
+                'category' => $category[$i][1],
+                'author' => $author[$i][1],
+                'url' => 'https://www.52pojie.cn/'.$url[$i][1],
+                'time' => $time[$i][1]
+            );
+        }
+    }
+    return $result;
+}
 // Main
 header('Access-Control-Allow-Origin:*');
 header('Content-Type:application/json');
@@ -350,6 +372,13 @@ else if($type == "bjnews"){
         "code" => 200, 
         "msg" => '解析成功',
         "data" => bjnews()
+    );
+}
+else if($type == "52pojie"){
+    $json = array(
+        "code" => 200, 
+        "msg" => '解析成功',
+        "data" => five2pojie()
     );
 }
 else{

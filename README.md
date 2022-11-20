@@ -4,11 +4,27 @@
 
 ## 支持类型
 
-> **baidu/bilibili/weibo/bilibilivideo/sougou/txnews/toutiao/thepaper/360so/pearvideo/haokan/haokanvideo/bjnews**
+| 返回值     | 解释                       |
+| ---------- | -------------------------- |
+| baidu       | 百度 |
+| bilibili        | B站搜索         |
+| weibo      | 微博                       |
+| bilibilivideo      | B站热门                       |
+| sougou      | 搜狗搜索                       |
+| txnews      | 腾讯新闻                       |
+| toutiao      | 今日头条                       |
+| thepaper      | 澎湃新闻                       |
+| 360so      | 360搜索                       |
+| pearvideo      | 梨视频                       |
+| haokan      | 好看搜索                      |
+| haokanvideo      | 好看热门                       |
+| bjnews      | 新京报                       |
+| 52pojie      | 吾爱破解                       |
+
 
 ## 请求示例
 
-> ?type=baidu
+> **?type=baidu**
 
 ### 返回示例
 
@@ -213,17 +229,10 @@
 
 22.11.6 Support 百度/B 站/微博/B 站热门视频/搜狗/腾讯新闻/今日头条/澎湃新闻/360 搜索/梨视频/好看视频热搜/好看视频热榜/新京报
 
+22.11.20 Support 吾爱破解
+
 | 返回值     | 解释                       |
 | ---------- | -------------------------- |
 | code       | 简便的判断程序返回是否正常 |
 | msg        | 程序返回的文字说明         |
-| index      | 排行                       |
-| title      | 热搜内容/标题              |
-| heat_score | 热度                       |
-| url        | 访问链接                   |
-| desc       | 描述                       |
-| category   | 分类                       |
-| up         | UP 主名字                  |
-| danmu      | 弹幕数                     |
-| BV         | BV 号                      |
-| video_url  | 视频地址                   |
+| data      | 数据内容                       |
