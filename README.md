@@ -4,23 +4,22 @@
 
 ## 支持类型
 
-| 类型     | 解释                       |
-| ---------- | -------------------------- |
-| baidu       | 百度 |
-| bilibili        | B站搜索         |
-| weibo      | 微博                       |
-| bilibilivideo      | B站热门                       |
-| sougou      | 搜狗搜索                       |
-| txnews      | 腾讯新闻                       |
-| toutiao      | 今日头条                       |
-| thepaper      | 澎湃新闻                       |
-| 360so      | 360搜索                       |
-| pearvideo      | 梨视频                       |
-| haokan      | 好看搜索                      |
-| haokanvideo      | 好看热门                       |
-| bjnews      | 新京报                       |
-| 52pojie      | 吾爱破解                       |
-
+| 类型          | 解释     |
+| ------------- | -------- |
+| baidu         | 百度     |
+| bilibili      | B 站搜索 |
+| weibo         | 微博     |
+| bilibilivideo | B 站热门 |
+| sougou        | 搜狗搜索 |
+| txnews        | 腾讯新闻 |
+| toutiao       | 今日头条 |
+| thepaper      | 澎湃新闻 |
+| 360so         | 360 搜索 |
+| pearvideo     | 梨视频   |
+| haokan        | 好看搜索 |
+| haokanvideo   | 好看热门 |
+| bjnews        | 新京报   |
+| 52pojie       | 吾爱破解 |
 
 ## 请求示例
 
@@ -231,8 +230,10 @@
 
 22.11.20 Support 吾爱破解
 
-| 返回值     | 解释                       |
-| ---------- | -------------------------- |
-| code       | 简便的判断程序返回是否正常 |
-| msg        | 程序返回的文字说明         |
-| data      | 数据内容                       |
+23.01.50 Fix B 站热门视频
+
+| 返回值 | 解释         |
+| ------ | ------------ |
+| code   | 程序返回码   |
+| msg    | 程序返回消息 |
+| data   | 数据内容     |
