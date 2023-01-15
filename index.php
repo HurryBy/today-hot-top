@@ -84,7 +84,7 @@ function bilibili(){
     return $result;
 }
 function bilibilivideo(){
-    $data = c("https://www.bilibili.com/v/popular/rank/all","PC");
+    $data = c("https://www.bilibili.com/v/popular/rank/all/","PC");
     $hot = zhengze($data, '/class="title">(.*)<\/a>/m');
     $hot_score = zhengze($data, '/alt="play">\n\s+([\w\W]*?)\n\s+<\/span>/m');
     $BV = zhengze($data, '/<a href="\/\/www.bilibili.com\/video\/(.*?)" target="_blank">/m');
@@ -277,6 +277,7 @@ function five2pojie(){
 header('Access-Control-Allow-Origin:*');
 header('Content-Type:application/json');
 $type = isset($_GET['type']) ? $_GET['type'] : NULL;
+
 if($type == NULL){
     $json = array(
         "code" => 201, 
