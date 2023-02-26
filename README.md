@@ -21,6 +21,8 @@
 | bjnews        | |新京报   |
 | 52pojie       | |吾爱破解 |
 |ithome||IT之家|
+| acfun        | search|A站搜索 |
+| acfun   | video|A站热门视频 |
 
 ## 请求参数
 | 类型          | 解释     |

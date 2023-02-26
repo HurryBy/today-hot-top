@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 header("Content-Type: text/html;charset=utf-8");
 function c($url, $ua)
 {
@@ -306,6 +306,51 @@ function ithome()
     }
     return $result;
 }
+function acfunvideo()
+{
+    $data = c("https://www.acfun.cn/rest/pc-direct/rank/channel?channelId=&subChannelId=&rankLimit=30&rankPeriod=DAY", "PC");
+    $data = json_decode($data, true);
+    for ($i = 0; $i <= 29; $i++) {
+        $result[$i] = array(
+            'index' => $i + 1,
+            'video' => array(
+                'title' => $data['rankList'][$i]['contentTitle'],
+                'description' => $data['rankList'][$i]['contentDesc'],
+                'viewCountShow' => $data['rankList'][$i]['viewCountShow'],
+                'shareCountShow' => $data['rankList'][$i]['shareCountShow'],
+                'stowCountShow' => $data['rankList'][$i]['stowCountShow'],
+                'danmakuCountShow' => $data['rankList'][$i]['danmakuCountShow'],
+                'bananaCountShow' => $data['rankList'][$i]['bananaCountShow'],
+                'giftPeachCountShow' => $data['rankList'][$i]['giftPeachCountShow'],
+                'picShareUrl' => $data['rankList'][$i]['picShareUrl'],
+                'shareUrl' => $data['rankList'][$i]['shareUrl'],
+                'cover' => $data['rankList'][$i]['videoCover'],
+                'channel' => $data['rankList'][$i]['channel'],
+                'tagList' => $data['rankList'][$i]['tagList']
+            ),
+            'author' => array(
+                'userId' => $data['rankList'][$i]['userId'],
+                'userName' => $data['rankList'][$i]['userName'],
+                'userSignature' => $data['rankList'][$i]['userSignature'],
+                'userImg' => $data['rankList'][$i]['userImg'],
+                'fansCount' => $data['rankList'][$i]['fansCount']
+            )
+        );
+    }
+    return $result;
+}
+function acfunsearch()
+{
+    $data = c("https://www.acfun.cn/rest/pc-direct/homePage/searchDefault", "PC");
+    $data = json_decode($data, true);
+    for ($i = 0; $i <= 15; $i++) {
+        $result[$i] = array(
+            'index' => $i + 1,
+            'keyword' => $data['searchKeywords'][$i]['keyword']
+        );
+    }
+    return $result;
+}
 // Main
 header('Access-Control-Allow-Origin:*');
 header('Content-Type:application/json');
@@ -369,6 +414,7 @@ switch ($type) {
                 $result = haokan();
                 break;
         }
+        break;
     case "bjnews":
         $result = bjnews();
         break;
@@ -377,6 +423,19 @@ switch ($type) {
         break;
     case "ithome":
         $result = ithome();
+        break;
+    case "acfun":
+        switch ($typeA) {
+            case "search":
+                $result = acfunsearch();
+                break;
+            case "video":
+                $result = acfunvideo();
+                break;
+            default:
+                $result = acfunsearch();
+                break;
+        }
         break;
     default:
         $result = NULL;
